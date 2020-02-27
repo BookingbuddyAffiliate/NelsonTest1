@@ -138,14 +138,14 @@
         sc += '"data": {';
         sc += '"num_adults": ' + adult + ',';
         sc += '"flights": [{';
-        sc += '"origin": "' + rorig + '",';
-        sc += '"destination": "' + rdest + '",';
-        sc += '"date": "' + rdepart + '"}';
+        sc += '"origin": "",';
+        sc += '"destination": "",';
+        sc += '"date": ""}';
 
         if (creturn != '') {
             sc += ',{"origin": "' + rdest + '",';
             sc += '"destination": "' + rorig + '",';
-            sc += '"date": "' + rreturn + '"}';
+            sc += '"date": ""}';
         }
 
         sc += '],';
