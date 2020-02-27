@@ -91,7 +91,12 @@
             sourceid= param['sourceid']
             traqparam = param['traqparam'];
         }
-
+        else if (getCookie('rorig') != undefined) {
+            rorig = getCookie('rorig');
+            rdest = getCookie('rdest');
+            cdepart = getCookie('rdepart');
+            creturn = getCookie('rreturn');
+        }
 
         if (cdepart != null && cdepart != '') {
             var dep = cdepart.split('/');
@@ -101,7 +106,7 @@
             rdepart = dy + '-' + Pad(dm) + '-' + Pad(dd);
         }
 
-        if (creturn != null && creturn != '') {
+        else if (creturn != null && creturn != '') {
             var ret = creturn.split('/');
             var rm = ret[0];
             var rd = ret[1];
