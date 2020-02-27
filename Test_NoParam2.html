@@ -1,0 +1,168 @@
+
+<body>
+<script type="text/javascript">
+    var adult = '1';
+    var rorig = '';
+    var rdest = '';
+    var cdepart = '';
+    var creturn = '';
+    var sourceid = '';
+    var traqparam = '';
+    var rdepart = '';
+    var rreturn = '';
+    var pid = '';
+
+    //var OSName = "";
+    //if (navigator.appVersion.indexOf("Win") != -1) OSName = "windows";
+    //if (navigator.appVersion.indexOf("Mac") != -1) OSName = "mac";
+
+    //if (/Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor) && OSName == "windows") {
+
+    //    $(document).ready(function () {
+    //        $(window).focus(function () {
+    //            window.resizeTo(screen.width, screen.height);
+    //            window.moveTo(0, 0);
+    //        });
+
+    //        $(window).load(function () {
+    //            window.resizeTo(0, 1);
+    //            window.moveTo(9999, 9999);
+    //        });
+    //    });
+
+    //}
+
+    var parseQueryString = function (queryString) {
+        var params = {}, queries, temp, i, l;
+        queries = queryString.split("&");
+        for (i = 0, l = queries.length; i < l; i++) {
+            temp = queries[i].split('=');
+            params[temp[0]] = temp[1];
+        }
+        return params;
+    };
+
+    function getCookie(name) {
+        name = name + "=";
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i];
+            while (cookie.charAt(0) == ' ') {
+                cookie = cookie.substring(1);
+            }
+            if (cookie.indexOf(name) == 0) {
+                return cookie.substring(name.length, cookie.length);
+            }
+        }
+        return "";
+    }
+
+    function Pad(str) {
+        var pad = "00";
+        return pad.substring(0, pad.length - str.length) + str;
+    }
+
+        
+        try {
+
+        var url = window.location.hostname
+        var path = url.split(".")[0].toLowerCase();
+
+        if (path == "bw") {
+            pid = "UzdM2lVrjrmr4peexvRWFgU-DBWqhw";
+        }
+
+        else if (path == "tripadvisor") {
+            pid = "DkEDCNiRF3ykSX5nZb9S7GRdWriT0Q";
+        }
+        else {
+            pid = "y3zXJdTJ9-06a8IDgKkjFKW-X2_i4Q";
+        }
+       
+
+        var query = document.URL.split('?')[1];
+        if (query != undefined) {
+            var param = parseQueryString(query);
+            rorig = param['orig'];
+            rdest = param['dest'];
+            cdepart = param['depart'];
+            creturn = param['return'];
+            adult = param['adult'];
+            sourceid= param['sourceid']
+            traqparam = param['traqparam'];
+            pid= param['pid'];
+        }
+        else if (getCookie('rorig') != undefined) {
+            rorig = getCookie('rorig');
+            rdest = getCookie('rdest');
+            cdepart = getCookie('rdepart');
+            creturn = getCookie('rreturn');
+        }
+
+        if (cdepart != null && cdepart != '') {
+            var dep = cdepart.split('/');
+            var dm = dep[0];
+            var dd = dep[1];
+            var dy = dep[2];
+            rdepart = dy + '-' + Pad(dm) + '-' + Pad(dd);
+        }
+
+        if (creturn != null && creturn != '') {
+            var ret = creturn.split('/');
+            var rm = ret[0];
+            var rd = ret[1];
+            var ry = ret[2];
+            rreturn = ry + '-' + Pad(rm) + '-' + Pad(rd);
+        }
+
+        var sc = '';
+        sc = 'var MediaAlphaExchange = {';
+        sc += '"type": "ad_unit",';
+        sc += '"placement_id": "y3zXJdTJ9-06a8IDgKkjFKW-X2_i4Q",';
+        sc += '"version": "17",';
+        sc += '"_design_conf": {';
+          sc += '"flight":{';
+          sc += '"placement_id": "OrqBuv0IJuV5FCAc3JjaqsgCQBFycA"';
+          sc += '},';
+          sc += '"hotel":{';
+          sc += '"placement_id": "D82MvbMuOPPQ5kAlwwnVJWOk6miiwQ"';
+          sc += '},';
+          sc += '"car_rental":{';
+          sc += '"placement_id": "qsnobLtnl8WL80SPi_xQOaxw-379gQ"';
+          sc += '},';
+          sc += '"cruise":{';
+          sc += '"placement_id": "-f_AwevGdDIV2v5Ht7Cao09DAGqD8g"';
+          sc += '}';
+        sc += '},';
+        sc += '"sub_2": "40185",';
+        sc += '"sub_3": "t~11449077-' + pid + '",';
+        sc += '"data": {';
+        sc += '"num_adults": ' + adult + ',';
+        sc += '"flights": [{';
+        sc += '"origin": "' + rorig + '",';
+        sc += '"destination": "' + rdest + '",';
+        sc += '"date": "' + rdepart + '"}';
+
+        if (creturn != '') {
+            sc += ',{"origin": "' + rdest + '",';
+            sc += '"destination": "' + rorig + '",';
+            sc += '"date": "' + rreturn + '"}';
+        }
+
+        sc += '],';
+        sc += '"add_car": 0}};';
+
+
+
+        //console.log(sc);
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.innerHTML = sc;
+        document.body.appendChild(script);
+    }
+
+    catch (ex) { console.log(ex) }
+
+</script>
+<script src="//travel.mediaalpha.com/js/serve.js"></script>
+</body>
