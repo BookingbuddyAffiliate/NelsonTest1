@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>HTML, CSS and JavaScript demo</title>
+</head>
+<script>
+    if (localStorage.getItem("SID") == undefined || localStorage.getItem("SID") == null) {
+        var SID = location.search.split('SID=')[1];
+        localStorage.setItem("SID", SID);
+    }
+    window.onload = function() {
+        window.frames['63493430400447'].document.getElementById('input_45').value = localStorage.getItem("SID");
+    }
+</script>
+<script type="text/javascript" src="https://form.jotform.me/jsform/63493430400447"></script>
+
+</body>
+</html>
