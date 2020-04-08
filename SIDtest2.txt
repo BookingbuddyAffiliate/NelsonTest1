@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>
+            Programmatically passing URL parameters to IFrame using JavaScript
+        </title>
+    </head>
+    
+    <body>
+        <iframe id="myIframe" frameborder="0" marginwidth="0" marginheight="0" scrolling="NO" width="100%" height="100%"></iframe>
+    </body>
+
+    <script>
+            let myIframe = document.getElementById("myIframe");
+            let endpoint = "https://bookingbuddyaffiliate.github.io/TravelWidget/Widget_BB_Flight.html";
+            let url_string = window.location.href;
+            let url = new URL(url_string);
+            console.log(url_string);
+            let sid = url.searchParams.get("source");
+            console.log(size);
+            let geo = url.searchParams.get("destination");
+            console.log(geo);
+            let adsURL = endpoint+"?destination="+geo+"&source="+sid;
+            console.log(adsURL);
+            myIframe.src = adsURL;
+        </script>
+    
+</html>
