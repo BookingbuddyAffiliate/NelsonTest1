@@ -1,24 +1,18 @@
+<html>
 <body>
-<script type="text/javascript">
-function getQueryVariable(variable)
-{
-       var query = window.location.search.substring(1);
-       var vars = query.split("&");
-       for (var i=0;i<vars.length;i++) {
-               var pair = vars[i].split("=");
-               if(pair[0] == variable){return pair[1];}
-       }
-       return(false);
-}
-
-var myParam = getQueryVariable("em");
-if ((typeof myParam !== "undefined") && (myParam !== false)) {
-    var iframeURL = "def.com/".concat(myParam);
-    document.getElementById('iFrameName').src = iframeURL;
-    }
-else{
-    document.getElementById('iFrameName').src = "https://bookingbuddyaffiliate.github.io/TravelWidget/Widget_BBlue_Flight.html";
-    }
-</script>
-  <iframe id="iFrameName" src="https://bookingbuddyaffiliate.github.io/TravelWidget/Widget_BBlue_Flight.html"height="250" width="300" seamless="seamless" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
+<iframe id="myIframe" height="750" width="600">
+</iframe>
 </body>
+<script>
+let myIframe = document.getElementById("myIframe");
+let endpoint = "https://bookingbuddyaffiliate.github.io/TravelWidget/Widget_BB_Flight.html";
+let url_string = window.location.href;
+let url = new URL (url_string);
+console.log(url_string);
+let air = url.searchParams.get("destination");
+console.log(url_string);
+let dest = "?=destination";
+let adsURL = endpoint+dest+air;
+myIframe.src = adsURL;
+</script>
+</html>
