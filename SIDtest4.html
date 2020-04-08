@@ -1,0 +1,23 @@
+<html>
+<body>
+<script type="text/javascript">
+		var iframe = document.getElementById("widgetframe");
+		if (document.contains(iframe)) {
+			var loc = window.location.toString(),
+					params = loc.split('?')[1],
+					query;
+			if (params){
+				if( iframe.src.indexOf('?') >= 0){
+					query = '&';
+				}else{
+					query = '?';
+				}
+				newsrc = iframe.src + query + params;
+				$('#widgetframe').attr('src', newsrc);
+			}
+		}
+	});
+</script>
+<iframe id="widgetframe" src="https://bookingbuddyaffiliate.github.io/TravelWidget/Widget_BBlue_Flight.html"height="250" width="400" seamless="seamless" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
+</body>
+<html>
