@@ -11,10 +11,12 @@ let url = new URL (url_string);
 console.log(url_string);
 let air = url.searchParams.get("destination");
 let sourceID = url.searchParams.get("source");
+let traq= url.searchParams.get("traqparam");
 console.log(url_string);
 let dest = "?destination=";
 let src= "&source=";
-let adsURL = endpoint+dest+air+src+sourceID;
+let prm= "&traqparam=";
+let adsURL = endpoint+dest+air+src+sourceID+prm+traq;
 console.log(url_string);
 myIframe.src = adsURL;
 </script>
