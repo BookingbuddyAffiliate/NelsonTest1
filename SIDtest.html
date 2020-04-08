@@ -10,9 +10,11 @@ let url_string = window.location.href;
 let url = new URL (url_string);
 console.log(url_string);
 let air = url.searchParams.get("destination");
+let sourceID = url.searchParams.get("source");
 console.log(url_string);
 let dest = "?destination=";
-let adsURL = endpoint+dest+air;
+let src= "&source=";
+let adsURL = endpoint+dest+air+src+sourceID;
 console.log(url_string);
 myIframe.src = adsURL;
 </script>
