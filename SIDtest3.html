@@ -1,26 +1,29 @@
 <html>
-<body>
-<script type="text/javascript">
- jQuery(function($){
-	$(window).load(function() {
-		var iframe = document.getElementById("rwcGetParams");
-		if (document.contains(iframe)) {
-			var loc = window.location.toString(),
-					params = loc.split('?')[1],
-					query;
-			if (params){
-				if( iframe.src.indexOf('?') >= 0){
-					query = '&';
-				}else{
-					query = '?';
-				}
-				newsrc = iframe.src + query + params;
-				$('#rwcGetParams').attr('src', newsrc);
-			}
-		}
-	});
-});
-</script>
-<iframe id="rwcGetParams" src="https://bookingbuddyaffiliate.github.io/TravelWidget/Widget_BBlue_Flight.html"height="250" width="300" seamless="seamless" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
-</body>
-<html>
+    <head>
+        <title>
+            Programmatically passing URL parameters to IFrame using JavaScript
+        </title>
+    </head>
+    
+    <body>
+        <iframe id="myIframe" frameborder="0" marginwidth="0" marginheight="0" scrolling="NO" width="100%" height="100%"></iframe>
+    </body>
+
+    <script>
+            let myIframe = document.getElementById("myIframe");
+            let endpoint = "https://bookingbuddyaffiliate.github.io/TravelWidget/Widget_BB_Flight.html";
+            let url_string = window.location.href;
+            let url = new URL(url_string);
+            console.log(url_string);
+            let sid = url.searchParams.get("source");
+            console.log(sid);
+            let geo = url.searchParams.get("destination");
+            console.log(geo);
+            let tp= url.searchParams.get("traqparam");
+            console.log(tp);
+            let adsURL = endpoint+"?destination="+ geo +"&source="+ sid +"&traqparam="+ tp;
+            console.log(adsURL);
+            myIframe.src = adsURL;
+        </script>
+    
+</html>
