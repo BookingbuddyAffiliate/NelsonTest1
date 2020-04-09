@@ -21,7 +21,7 @@
             console.log(geo);
             let adsURL = endpoint+"?destination="+geo+"&source="+sid;
             console.log(adsURL);
-            myIframe.src = adsURL;
+            myIframe.src = endpoint;
         </script>
     
 </html>
