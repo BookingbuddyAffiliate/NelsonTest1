@@ -1,26 +1,23 @@
-<!DOCTYPE html>
 <html>
 <body>
+<iframe id="myIframe" height="750" width="600">
+</iframe>
+</body>
 <script>
-<script type="text/javascript">
-
-$(function() {
-
-var loc = window.location.toString(),
-params = loc.split('&')[1],
-params2 = loc.split('&')[2],
-params3 = loc.split('&')[3],
-params4 = loc.split('&')[4],
-params5 = loc.split('&')[5],
-params6 = loc.split('&')[6],
-  iframe = document.getElementById('myIframe');
-alert(iframe.src); 
-iframe.src = iframe.src + '?' + params + '&' + params2 + '&' + params3 + '&' + params4+ '&' + params5;
-alert(iframe.src); 
-
-});
+let myIframe = document.getElementById("myIframe");
+let endpoint = "https://bookingbuddyaffiliate.github.io/TravelWidget/Widget_BB_Flight.html";
+let url_string = window.location.href;
+let url = new URL (url_string);
+console.log(url_string);
+let air = url.searchParams.get("destination");
+let sourceID = url.searchParams.get("source");
+let traq= url.searchParams.get("traqparam");
+console.log(url_string);
+let dest = "?destination=";
+let src= "&source=";
+let prm= "&traqparam=";
+let adsURL = endpoint+dest+air+src+sourceID+prm+traq;
+console.log(url_string);
+myIframe.src = adsURL;
 </script>
-<iframe id="myIframe"src="https://bookingbuddyaffiliate.github.io/TravelWidget/Widget_BBlue_Flight.html" height="250" width="600" seamless="seamless" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
-  </body>
 </html>
-  
