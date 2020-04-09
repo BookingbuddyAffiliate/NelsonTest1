@@ -16,7 +16,7 @@
             let url = new URL(url_string);
             console.log(url_string);
             let sid = url.searchParams.get("source");
-            console.log(size);
+            console.log(sid);
             let geo = url.searchParams.get("destination");
             console.log(geo);
             let adsURL = endpoint+"?destination="+geo+"&source="+sid;
